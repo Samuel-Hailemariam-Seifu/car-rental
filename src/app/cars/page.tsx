@@ -1,9 +1,3 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
 'use client'
 
 import { useState, useEffect } from 'react'
@@ -65,12 +59,18 @@ export default function CarsPage() {
       params.append('sortBy', sortBy)
 
       const response = await fetch(`/api/cars/search?${params.toString()}`)
-      if (!response.ok) throw new Error('Failed to fetch cars')
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}))
+        console.error('API Error:', response.status, errorData)
+        throw new Error(errorData.error || `Failed to fetch cars: ${response.status}`)
+      }
       
       const data = await response.json()
       setCars(data.cars || [])
     } catch (error) {
       console.error('Error fetching cars:', error)
+      // Set empty array on error to prevent UI issues
+      setCars([])
     } finally {
       setLoading(false)
     }

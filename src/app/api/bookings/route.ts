@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@clerk/nextjs/server'
+import { getCurrentUserId } from '@/lib/auth'
 import { supabase, supabaseAdmin } from '@/lib/supabase'
 import { stripe, formatAmountForStripe } from '@/lib/stripe'
 
 // Create a new booking
 export async function POST(request: NextRequest) {
   try {
-    const { userId } = await auth()
+    const userId = await getCurrentUserId()
     if (!userId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
@@ -127,7 +127,7 @@ export async function POST(request: NextRequest) {
 // Get user's bookings
 export async function GET(request: NextRequest) {
   try {
-    const { userId } = await auth()
+    const userId = await getCurrentUserId()
     if (!userId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }

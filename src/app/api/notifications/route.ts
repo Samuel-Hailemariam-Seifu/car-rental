@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@clerk/nextjs/server'
+import { getCurrentUserId } from '@/lib/auth'
 import { supabaseAdmin } from '@/lib/supabase'
 
 // Get user's notifications
 export async function GET(request: NextRequest) {
   try {
-    const { userId } = await auth()
+    const userId = await getCurrentUserId()
     if (!userId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
 // Mark notifications as read
 export async function PATCH(request: NextRequest) {
   try {
-    const { userId } = await auth()
+    const userId = await getCurrentUserId()
     if (!userId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }

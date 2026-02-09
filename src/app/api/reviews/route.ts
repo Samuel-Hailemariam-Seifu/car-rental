@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@clerk/nextjs/server'
+import { getCurrentUserId } from '@/lib/auth'
 import { supabaseAdmin } from '@/lib/supabase'
 
 // Get reviews for a car or user
@@ -59,7 +59,7 @@ export async function GET(request: NextRequest) {
 // Create a review
 export async function POST(request: NextRequest) {
   try {
-    const { userId } = await auth()
+    const userId = await getCurrentUserId()
     if (!userId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }

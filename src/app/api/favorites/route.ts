@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@clerk/nextjs/server'
+import { getCurrentUserId } from '@/lib/auth'
 import { supabaseAdmin } from '@/lib/supabase'
 
 // Get user's favorites
 export async function GET(request: NextRequest) {
   try {
-    const { userId } = await auth()
+    const userId = await getCurrentUserId()
     if (!userId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
 // Add to favorites
 export async function POST(request: NextRequest) {
   try {
-    const { userId } = await auth()
+    const userId = await getCurrentUserId()
     if (!userId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
 // Remove from favorites
 export async function DELETE(request: NextRequest) {
   try {
-    const { userId } = await auth()
+    const userId = await getCurrentUserId()
     if (!userId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }

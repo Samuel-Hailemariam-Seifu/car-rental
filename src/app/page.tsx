@@ -1,480 +1,525 @@
+'use client'
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { 
   Car, 
   Search, 
   MapPin, 
   Calendar, 
-  Clock, 
   Star, 
-  Eye, 
-  Play, 
   Menu, 
-  ShoppingCart, 
-  User, 
-  ChevronDown,
-  Zap,
+  User,
+  ChevronRight,
   Shield,
+  Zap,
   Award,
-  Gauge,
-  Weight,
-  Battery,
-  Timer,
-  ArrowRight,
   Heart,
   Share2,
+  ArrowRight,
+  Check,
+  TrendingUp,
+  Users,
+  Clock,
   Phone,
   Mail,
   Facebook,
   Instagram,
   Twitter,
-  Youtube
+  Youtube,
+  Linkedin
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Modern Clean Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div className="min-h-screen bg-white">
+      {/* Modern Header */}
+      <header className="bg-white border-b border-gray-100 sticky top-0 z-50 backdrop-blur-md bg-white/95">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900">
+              <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900 md:hidden">
                 <Menu className="h-5 w-5" />
               </Button>
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
-                  <Car className="h-5 w-5 text-white" />
+              <Link href="/" className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center shadow-lg">
+                  <Car className="h-6 w-6 text-white" />
                 </div>
-                <span className="text-xl font-bold text-black">AUTOCAR</span>
-              </div>
+                <span className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                  CarRental
+                </span>
+              </Link>
             </div>
             
-            <nav className="hidden md:flex space-x-8">
-              <Link href="/" className="text-gray-600 hover:text-gray-900 font-medium">Home</Link>
-              <Link href="/cars" className="text-gray-600 hover:text-gray-900 font-medium">Cars</Link>
-              <Link href="/about" className="text-gray-600 hover:text-gray-900 font-medium">About</Link>
-              <Link href="/contact" className="text-gray-600 hover:text-gray-900 font-medium">Contact</Link>
+            <nav className="hidden md:flex items-center space-x-8">
+              <Link href="/cars" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">
+                Browse Cars
+              </Link>
+              <Link href="/how-it-works" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">
+                How It Works
+              </Link>
+              <Link href="/about" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">
+                About
+              </Link>
             </nav>
             
-            <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900">
-                <Search className="h-4 w-4" />
-              </Button>
-              <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900">
-                <ShoppingCart className="h-4 w-4" />
-              </Button>
-              <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900">
-                <User className="h-4 w-4" />
-              </Button>
+            <div className="flex items-center space-x-3">
+              <Link href="/sign-in">
+                <Button variant="ghost" className="text-gray-700 hover:text-gray-900">
+                  Sign In
+                </Button>
+              </Link>
+              <Link href="/sign-up">
+                <Button className="bg-red-500 hover:bg-red-600 text-white">
+                  Get Started
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Hero Section - Luxury Car Rental */}
-      <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 overflow-hidden">
-        {/* Background with Luxury Car */}
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-800 via-red-900/20 to-gray-700">
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-gray-50 via-white to-gray-50 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
           <div 
-            className="absolute inset-0 opacity-20"
+            className="absolute inset-0"
             style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
             }}
           ></div>
         </div>
-        
-        {/* Luxury Car Image Placeholder */}
-        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/2 h-full opacity-30">
-          <div className="w-full h-full bg-gradient-to-l from-transparent to-black/50 flex items-center justify-center">
-            <Car className="h-96 w-96 text-white/20" />
-          </div>
-        </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
-            {/* Left Content */}
-            <div className="space-y-8">
-              <div className="space-y-6">
-                <Badge className="bg-red-500/20 text-red-400 border-red-500/30 px-4 py-2 text-sm font-semibold">
-                  PREMIUM LUXURY
-                </Badge>
-                <h1 className="text-6xl md:text-7xl font-bold text-white leading-tight">
-                  LUXURY
-                  <span className="block text-white">CAR RENTAL</span>
-                </h1>
-                <p className="text-xl text-white/80 max-w-lg leading-relaxed">
-                  Experience the ultimate in luxury and performance with our premium fleet of exotic and luxury vehicles.
-                </p>
-                <div className="text-3xl font-bold text-white">
-                  From $299/day
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 relative z-10">
+          <div className="text-center max-w-4xl mx-auto">
+            <Badge className="bg-red-50 text-red-600 border-red-200 px-4 py-1.5 mb-6">
+              Trusted by 10,000+ renters
+            </Badge>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+              Rent Cars from
+              <span className="block bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
+                Trusted Owners
+              </span>
+            </h1>
+            <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+              Discover the perfect car for your next adventure. From economy to luxury, 
+              find your ideal ride from verified owners in your area.
+            </p>
+
+            {/* Search Bar */}
+            <Card className="bg-white border-2 border-gray-200 shadow-xl p-2 mb-8">
+              <div className="flex flex-col md:flex-row gap-2">
+                <div className="flex-1 flex items-center space-x-3 px-4 py-3 border-r border-gray-200">
+                  <MapPin className="h-5 w-5 text-gray-400" />
+                  <Input
+                    placeholder="Where are you going?"
+                    className="border-0 focus-visible:ring-0 text-lg px-0"
+                  />
                 </div>
+                <div className="flex-1 flex items-center space-x-3 px-4 py-3 border-r border-gray-200">
+                  <Calendar className="h-5 w-5 text-gray-400" />
+                  <Input
+                    placeholder="Pick-up date"
+                    type="date"
+                    className="border-0 focus-visible:ring-0 text-lg px-0"
+                  />
+                </div>
+                <div className="flex-1 flex items-center space-x-3 px-4 py-3">
+                  <Calendar className="h-5 w-5 text-gray-400" />
+                  <Input
+                    placeholder="Return date"
+                    type="date"
+                    className="border-0 focus-visible:ring-0 text-lg px-0"
+                  />
+                </div>
+                <Link href="/cars" className="md:w-auto w-full">
+                  <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white h-full px-8 py-6 text-lg font-semibold w-full md:w-auto">
+                    <Search className="h-5 w-5 mr-2" />
+                    Search Cars
+                  </Button>
+                </Link>
               </div>
+            </Card>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white px-8 py-4 text-lg font-semibold rounded-lg">
-                  <Car className="h-5 w-5 mr-2" />
-                  EXPLORE FLEET
-                </Button>
-                <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-lg px-8 py-4 text-lg">
-                  <Play className="h-5 w-5 mr-2" />
-                  Watch Video
-                </Button>
+            {/* Trust Indicators */}
+            <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-gray-600">
+              <div className="flex items-center space-x-2">
+                <Check className="h-5 w-5 text-green-500" />
+                <span>Verified Owners</span>
               </div>
-
-              {/* Quick Stats */}
-              <div className="grid grid-cols-3 gap-6 pt-8">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white">500+</div>
-                  <div className="text-white/60 text-sm">Luxury Cars</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white">50+</div>
-                  <div className="text-white/60 text-sm">Cities</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white">24/7</div>
-                  <div className="text-white/60 text-sm">Support</div>
-                </div>
+              <div className="flex items-center space-x-2">
+                <Check className="h-5 w-5 text-green-500" />
+                <span>24/7 Support</span>
               </div>
-            </div>
-
-            {/* Right - Car Showcase */}
-            <div className="relative">
-              <div className="grid grid-cols-2 gap-4">
-                {/* Main Car Card */}
-                <div className="col-span-2">
-                  <Card className="bg-white/10 backdrop-blur-md border-white/20 overflow-hidden">
-                    <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center relative">
-                      <Car className="h-32 w-32 text-white/40" />
-                      <div className="absolute top-4 right-4">
-                        <Button variant="ghost" size="sm" className="bg-white/20 hover:bg-white/30 text-white">
-                          <Heart className="h-4 w-4" />
-                        </Button>
-                      </div>
-                      <div className="absolute bottom-4 left-4">
-                        <Badge className="bg-green-500 text-white">Available</Badge>
-                      </div>
-                    </div>
-                    <CardContent className="p-4">
-                      <h3 className="text-white font-bold text-lg">Ferrari 488 GTB</h3>
-                      <p className="text-white/60 text-sm">Supercar • Automatic</p>
-                      <div className="flex items-center justify-between mt-2">
-                        <div className="text-white font-bold">$899/day</div>
-                        <div className="flex items-center">
-                          <Star className="h-4 w-4 text-yellow-400 fill-current" />
-                          <span className="text-white/80 text-sm ml-1">4.9</span>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-
-                {/* Side Car Cards */}
-                <Card className="bg-white/10 backdrop-blur-md border-white/20 overflow-hidden">
-                  <div className="aspect-square bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                    <Car className="h-16 w-16 text-white/40" />
-                  </div>
-                  <CardContent className="p-3">
-                    <h4 className="text-white font-semibold text-sm">Lamborghini Huracán</h4>
-                    <p className="text-white/60 text-xs">$1,299/day</p>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-white/10 backdrop-blur-md border-white/20 overflow-hidden">
-                  <div className="aspect-square bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                    <Car className="h-16 w-16 text-white/40" />
-                  </div>
-                  <CardContent className="p-3">
-                    <h4 className="text-white font-semibold text-sm">McLaren 720S</h4>
-                    <p className="text-white/60 text-xs">$1,199/day</p>
-                  </CardContent>
-                </Card>
+              <div className="flex items-center space-x-2">
+                <Check className="h-5 w-5 text-green-500" />
+                <span>Best Prices</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Check className="h-5 w-5 text-green-500" />
+                <span>Instant Booking</span>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white">
-          <div className="flex flex-col items-center space-y-2">
-            <div className="w-6 h-6 border-2 border-white rounded-full flex items-center justify-center">
-              <ChevronDown className="h-4 w-4" />
-            </div>
-            <span className="text-sm">Scroll Down</span>
           </div>
         </div>
       </section>
 
-
-      {/* Volvo EX30 Rental Interface */}
+      {/* Features Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Left Panel - Car Details */}
-            <div className="lg:col-span-2">
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-                <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center relative">
-                  <Car className="h-32 w-32 text-gray-400" />
-                  <div className="absolute top-4 left-4">
-                    <Button variant="ghost" size="sm" className="bg-white/80 hover:bg-white">
-                      <ArrowRight className="h-4 w-4 mr-2" />
-                      Back
-                    </Button>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Why Choose CarRental?
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Everything you need for a seamless car rental experience
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: Shield,
+                title: 'Verified Owners',
+                description: 'All car owners are verified and background-checked for your safety',
+                color: 'text-blue-500'
+              },
+              {
+                icon: Zap,
+                title: 'Instant Booking',
+                description: 'Book your car in minutes with our streamlined booking process',
+                color: 'text-yellow-500'
+              },
+              {
+                icon: Award,
+                title: 'Best Prices',
+                description: 'Compare prices from multiple owners and get the best deals',
+                color: 'text-green-500'
+              },
+              {
+                icon: Clock,
+                title: '24/7 Support',
+                description: 'Round-the-clock customer support whenever you need help',
+                color: 'text-purple-500'
+              }
+            ].map((feature, index) => (
+              <Card key={index} className="border-gray-200 hover:border-red-300 hover:shadow-lg transition-all">
+                <CardContent className="p-6">
+                  <div className={`w-12 h-12 ${feature.color} bg-${feature.color.split('-')[1]}-50 rounded-lg flex items-center justify-center mb-4`}>
+                    <feature.icon className={`h-6 w-6 ${feature.color}`} />
                   </div>
-                  <div className="absolute top-4 right-4 flex space-x-2">
-                    <Button variant="ghost" size="sm" className="bg-white/80 hover:bg-white">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-600">
+                    {feature.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Popular Cars Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-12">
+            <div>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                Popular Cars
+              </h2>
+              <p className="text-xl text-gray-600">
+                Most booked cars this month
+              </p>
+            </div>
+            <Link href="/cars">
+              <Button variant="outline" className="hidden md:flex">
+                View All
+                <ChevronRight className="h-4 w-4 ml-2" />
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                make: 'Tesla',
+                model: 'Model S',
+                year: 2023,
+                price: 150,
+                rating: 4.9,
+                reviews: 124,
+                image: '/placeholder-car.jpg',
+                location: 'San Francisco, CA'
+              },
+              {
+                make: 'BMW',
+                model: 'M440 Coupe',
+                year: 2024,
+                price: 200,
+                rating: 4.8,
+                reviews: 89,
+                image: '/placeholder-car.jpg',
+                location: 'Los Angeles, CA'
+              },
+              {
+                make: 'Mercedes-Benz',
+                model: 'AMG GT',
+                year: 2023,
+                price: 350,
+                rating: 5.0,
+                reviews: 67,
+                image: '/placeholder-car.jpg',
+                location: 'Miami, FL'
+              }
+            ].map((car, index) => (
+              <Card key={index} className="overflow-hidden hover:shadow-xl transition-all border-gray-200 group">
+                <div className="relative h-48 bg-gradient-to-br from-gray-100 to-gray-200">
+                  <div className="w-full h-full flex items-center justify-center">
+                    <Car className="h-24 w-24 text-gray-400 group-hover:text-gray-500 transition-colors" />
+                  </div>
+                  <div className="absolute top-4 right-4">
+                    <Button variant="ghost" size="sm" className="bg-white/90 hover:bg-white shadow-md">
                       <Heart className="h-4 w-4" />
                     </Button>
-                    <Button variant="ghost" size="sm" className="bg-white/80 hover:bg-white">
-                      <Share2 className="h-4 w-4" />
-                    </Button>
+                  </div>
+                  <div className="absolute top-4 left-4">
+                    <Badge className="bg-green-500 text-white">Available</Badge>
                   </div>
                 </div>
-                
-                <div className="p-8">
-                  <div className="flex items-center space-x-4 mb-6">
-                    <h2 className="text-3xl font-bold text-gray-900">Volvo EX30</h2>
-                    <Badge className="bg-green-100 text-green-800">Fully electric crossover</Badge>
-                  </div>
-                  
-                  <div className="flex space-x-2 mb-6">
-                    {['L', 'R', 'F', 'B'].map((badge, index) => (
-                      <div 
-                        key={index}
-                        className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
-                          index === 0 ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-600'
-                        }`}
-                      >
-                        {badge}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Panel - AI Assistant */}
-            <div className="lg:col-span-1">
-              <Card className="bg-white border border-gray-200 shadow-lg">
-                <CardHeader className="flex flex-row items-center justify-between">
-                  <CardTitle className="text-lg">AI Assistant</CardTitle>
-                  <Button variant="ghost" size="sm">
-                    <span className="sr-only">Close</span>
-                    ×
-                  </Button>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-gray-600">How can I help you?</p>
-                  
-                  <div className="grid grid-cols-2 gap-3">
-                    <Card className="bg-gray-50 border border-gray-200">
-                      <CardContent className="p-3 text-center">
-                        <div className="flex justify-center mb-2">
-                          <Shield className="h-5 w-5 text-green-600" />
-                        </div>
-                        <div className="text-sm font-semibold text-gray-900">Book a rent</div>
-                        <div className="text-xs text-gray-600">5 min</div>
-                      </CardContent>
-                    </Card>
-                    <Card className="bg-gray-50 border border-gray-200">
-                      <CardContent className="p-3 text-center">
-                        <div className="flex justify-center mb-2">
-                          <Award className="h-5 w-5 text-blue-600" />
-                        </div>
-                        <div className="text-sm font-semibold text-gray-900">Analysis</div>
-                        <div className="text-xs text-gray-600">Damages</div>
-                      </CardContent>
-                    </Card>
-                    <Card className="bg-gray-50 border border-gray-200">
-                      <CardContent className="p-3 text-center">
-                        <div className="flex justify-center mb-2">
-                          <Shield className="h-5 w-5 text-purple-600" />
-                        </div>
-                        <div className="text-sm font-semibold text-gray-900">Insurance</div>
-                        <div className="text-xs text-gray-600">Pick a Plan</div>
-                      </CardContent>
-                    </Card>
-                    <Card className="bg-gray-50 border border-gray-200">
-                      <CardContent className="p-3 text-center">
-                        <div className="flex justify-center mb-2">
-                          <Zap className="h-5 w-5 text-yellow-600" />
-                        </div>
-                        <div className="text-sm font-semibold text-gray-900">Payment</div>
-                        <div className="text-xs text-gray-600">Calculate</div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                  
-                  <div className="space-y-3">
-                    <Input 
-                      placeholder="Arrange to rent this car for 8am|" 
-                      className="w-full"
-                    />
-                    <div className="flex items-center space-x-2">
-                      <Button size="sm" variant="outline" className="flex-1">
-                        <span className="text-xs">$</span>
-                      </Button>
-                      <Button size="sm" variant="outline" className="flex-1">
-                        <span className="text-xs">📎</span>
-                      </Button>
-                      <Button size="sm" variant="outline" className="flex-1">
-                        <span className="text-xs">⚙️</span>
-                      </Button>
-                      <Button className="bg-green-600 hover:bg-green-700 text-white">
-                        Send
-                      </Button>
+                <CardContent className="p-6">
+                  <div className="flex items-start justify-between mb-2">
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900">
+                        {car.make} {car.model}
+                      </h3>
+                      <p className="text-gray-600 text-sm">{car.year}</p>
                     </div>
+                    <div className="flex items-center space-x-1">
+                      <Star className="h-4 w-4 text-yellow-400 fill-current" />
+                      <span className="font-semibold text-gray-900">{car.rating}</span>
+                      <span className="text-gray-600 text-sm">({car.reviews})</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center text-gray-600 text-sm mb-4">
+                    <MapPin className="h-4 w-4 mr-1" />
+                    {car.location}
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-2xl font-bold text-gray-900">${car.price}</span>
+                      <span className="text-gray-600">/day</span>
+                    </div>
+                    <Link href={`/cars/${car.make.toLowerCase()}-${car.model.toLowerCase().replace(' ', '-')}`}>
+                      <Button className="bg-red-500 hover:bg-red-600 text-white">
+                        View Details
+                        <ArrowRight className="h-4 w-4 ml-2" />
+                      </Button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>
-            </div>
+            ))}
           </div>
 
-          {/* Bottom Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-            <Card className="bg-white border border-gray-200 shadow-sm">
-              <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle className="text-lg">My Location</CardTitle>
-                <Button variant="ghost" size="sm">
-                  <ChevronDown className="h-4 w-4" />
-                </Button>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center space-x-3">
-                  <MapPin className="h-5 w-5 text-green-600" />
-                  <div>
-                    <div className="font-semibold text-gray-900">Vermont Square, Los Angeles</div>
-                    <div className="text-sm text-gray-600">Current location</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+          <div className="text-center mt-12 md:hidden">
+            <Link href="/cars">
+              <Button variant="outline" size="lg">
+                View All Cars
+                <ChevronRight className="h-4 w-4 ml-2" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
 
-            <Card className="bg-white border border-gray-200 shadow-sm">
-              <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle className="text-lg">My Dates</CardTitle>
-                <Button variant="ghost" size="sm">
-                  <ChevronDown className="h-4 w-4" />
-                </Button>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-600">20th of July · 10:25 AM</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div className="text-2xl font-bold text-gray-900">20 Jul</div>
-                    <div className="flex space-x-2">
-                      <Button variant="ghost" size="sm">‹</Button>
-                      <Button variant="ghost" size="sm">›</Button>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div className="text-2xl font-bold text-gray-900">10:25 AM</div>
-                    <div className="flex space-x-2">
-                      <Button variant="ghost" size="sm">‹</Button>
-                      <Button variant="ghost" size="sm">›</Button>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+      {/* Stats Section */}
+      <section className="py-20 bg-gradient-to-r from-red-500 to-red-600 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">10K+</div>
+              <div className="text-red-100">Active Users</div>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">5K+</div>
+              <div className="text-red-100">Cars Available</div>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">50+</div>
+              <div className="text-red-100">Cities</div>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">4.9</div>
+              <div className="text-red-100">Avg Rating</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <Card className="bg-white border border-gray-200 shadow-sm">
-              <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle className="text-lg">Payment Method</CardTitle>
-                <Button variant="ghost" size="sm">
-                  <ChevronDown className="h-4 w-4" />
-                </Button>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
-                    <span className="text-white text-sm font-bold">💳</span>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-gray-900">Credit Card</div>
-                    <div className="text-sm text-gray-600">3451 **** **** 7896</div>
-                  </div>
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+      {/* How It Works Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              How It Works
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Rent a car in three simple steps
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                step: '01',
+                title: 'Search & Compare',
+                description: 'Browse through thousands of cars and compare prices, features, and reviews from verified owners.',
+                icon: Search
+              },
+              {
+                step: '02',
+                title: 'Book Instantly',
+                description: 'Select your dates, review the details, and book your car instantly with secure payment.',
+                icon: Calendar
+              },
+              {
+                step: '03',
+                title: 'Hit the Road',
+                description: 'Pick up your car and enjoy your journey. We\'re here to help if you need anything.',
+                icon: Car
+              }
+            ].map((item, index) => (
+              <div key={index} className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 text-red-600 rounded-full text-2xl font-bold mb-6">
+                  {item.step}
                 </div>
-              </CardContent>
-            </Card>
+                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <item.icon className="h-8 w-8 text-gray-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Ready to Find Your Perfect Car?
+          </h2>
+          <p className="text-xl text-gray-300 mb-8">
+            Join thousands of satisfied customers and start your journey today
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/cars">
+              <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white px-8 py-6 text-lg">
+                Browse Cars
+                <ArrowRight className="h-5 w-5 ml-2" />
+              </Button>
+            </Link>
+            <Link href="/sign-up">
+              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg">
+                List Your Car
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-gray-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div>
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                  <Car className="h-5 w-5 text-black" />
+                <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center">
+                  <Car className="h-6 w-6 text-white" />
                 </div>
-                <span className="text-xl font-bold">AUTOCAR</span>
+                <span className="text-2xl font-bold">CarRental</span>
               </div>
-              <p className="text-gray-400 mb-4">Premium car rental service</p>
+              <p className="text-gray-400 mb-6">
+                Your trusted platform for car rentals. Connect with verified owners and find the perfect car for your needs.
+              </p>
               <div className="flex space-x-4">
                 <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white">
-                  <Facebook className="h-4 w-4" />
+                  <Facebook className="h-5 w-5" />
                 </Button>
                 <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white">
-                  <Instagram className="h-4 w-4" />
+                  <Instagram className="h-5 w-5" />
                 </Button>
                 <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white">
-                  <Twitter className="h-4 w-4" />
+                  <Twitter className="h-5 w-5" />
                 </Button>
                 <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white">
-                  <Youtube className="h-4 w-4" />
+                  <Youtube className="h-5 w-5" />
+                </Button>
+                <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white">
+                  <Linkedin className="h-5 w-5" />
                 </Button>
               </div>
             </div>
             
             <div>
-              <h3 className="font-semibold text-white mb-4">Services</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link href="/rent" className="hover:text-white">Car Rental</Link></li>
-                <li><Link href="/luxury" className="hover:text-white">Luxury Cars</Link></li>
-                <li><Link href="/electric" className="hover:text-white">Electric Vehicles</Link></li>
-                <li><Link href="/sports" className="hover:text-white">Sports Cars</Link></li>
+              <h3 className="font-semibold text-white mb-4">Product</h3>
+              <ul className="space-y-3 text-gray-400">
+                <li><Link href="/cars" className="hover:text-white transition-colors">Browse Cars</Link></li>
+                <li><Link href="/how-it-works" className="hover:text-white transition-colors">How It Works</Link></li>
+                <li><Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link></li>
+                <li><Link href="/become-owner" className="hover:text-white transition-colors">Become an Owner</Link></li>
               </ul>
             </div>
             
             <div>
               <h3 className="font-semibold text-white mb-4">Support</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link href="/help" className="hover:text-white">Help Center</Link></li>
-                <li><Link href="/contact" className="hover:text-white">Contact Us</Link></li>
-                <li><Link href="/faq" className="hover:text-white">FAQ</Link></li>
-                <li><Link href="/terms" className="hover:text-white">Terms of Service</Link></li>
+              <ul className="space-y-3 text-gray-400">
+                <li><Link href="/help" className="hover:text-white transition-colors">Help Center</Link></li>
+                <li><Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
+                <li><Link href="/faq" className="hover:text-white transition-colors">FAQ</Link></li>
+                <li><Link href="/safety" className="hover:text-white transition-colors">Safety</Link></li>
               </ul>
             </div>
             
             <div>
-              <h3 className="font-semibold text-white mb-4">Contact</h3>
-              <div className="space-y-2 text-gray-400">
-                <div className="flex items-center space-x-2">
-                  <Phone className="h-4 w-4" />
-                  <span>+1 (555) 123-4567</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Mail className="h-4 w-4" />
-                  <span>info@autocar.com</span>
-                </div>
-              </div>
+              <h3 className="font-semibold text-white mb-4">Legal</h3>
+              <ul className="space-y-3 text-gray-400">
+                <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
+                <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/cookies" className="hover:text-white transition-colors">Cookie Policy</Link></li>
+                <li><Link href="/insurance" className="hover:text-white transition-colors">Insurance</Link></li>
+              </ul>
             </div>
           </div>
           
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-            <p className="text-gray-400">© 2024 AUTOCAR. All rights reserved.</p>
+          <div className="border-t border-gray-800 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <p className="text-gray-400 text-sm">
+                © {new Date().getFullYear()} CarRental. All rights reserved.
+              </p>
+              <div className="flex items-center space-x-6 mt-4 md:mt-0">
+                <div className="flex items-center space-x-2 text-gray-400 text-sm">
+                  <Phone className="h-4 w-4" />
+                  <span>+1 (555) 123-4567</span>
+                </div>
+                <div className="flex items-center space-x-2 text-gray-400 text-sm">
+                  <Mail className="h-4 w-4" />
+                  <span>support@carrental.com</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </footer>

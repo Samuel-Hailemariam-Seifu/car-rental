@@ -1,6 +1,6 @@
 # CarRental - Premium Car Rental Marketplace
 
-A production-ready car rental marketplace built with Next.js, TypeScript, Tailwind CSS, Clerk authentication, and Supabase.
+A production-ready car rental marketplace built with Next.js, TypeScript, Tailwind CSS, and Supabase.
 
 ## 🚀 Features
 
@@ -18,7 +18,7 @@ A production-ready car rental marketplace built with Next.js, TypeScript, Tailwi
 
 - **Frontend**: Next.js 15 (App Router), TypeScript, Tailwind CSS
 - **UI Components**: shadcn/ui with Radix UI primitives
-- **Authentication**: Clerk with custom user metadata
+- **Authentication**: Custom authentication system (ready for Supabase Auth, NextAuth, or your preferred solution)
 - **Database**: Supabase (PostgreSQL) with Row Level Security
 - **Payments**: Stripe (with Connect for payouts)
 - **File Storage**: Supabase Storage
@@ -30,7 +30,6 @@ A production-ready car rental marketplace built with Next.js, TypeScript, Tailwi
 - Node.js 18+
 - npm or yarn
 - Supabase account
-- Clerk account
 - Stripe account (optional)
 
 ## 🚀 Quick Start
@@ -54,14 +53,6 @@ cp .env.example .env.local
 Update `.env.local` with your actual credentials:
 
 ```env
-# Clerk Authentication
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_your_key_here
-CLERK_SECRET_KEY=sk_test_your_key_here
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/onboarding
-
 # Supabase Database
 NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key_here
@@ -105,18 +96,14 @@ supabase start
 supabase db push
 ```
 
-### 4. Clerk Setup
+### 4. Authentication Setup
 
-1. Create a new Clerk application
-2. Configure custom user metadata fields:
-   - `roles` (array of strings)
-   - `user_type` (individual | company)
-   - `company_id` (string, optional)
-   - `onboarding_complete` (boolean)
-   - `license_uploaded` (boolean)
-   - `license_verified` (boolean)
+The app currently uses a placeholder authentication system. You can integrate:
+- **Supabase Auth**: Recommended for seamless integration with your database
+- **NextAuth.js**: Popular Next.js authentication solution
+- **Custom Auth**: Your own authentication system
 
-3. Set up webhooks (optional) to sync user data with Supabase
+Update `src/lib/auth.ts` to implement your chosen authentication method.
 
 ### 5. Stripe Setup (Optional)
 
@@ -145,7 +132,7 @@ src/
 ├── components/           # Reusable UI components
 │   └── ui/              # shadcn/ui components
 ├── lib/                 # Utility libraries
-│   ├── clerk.ts         # Clerk authentication helpers
+│   ├── auth.ts          # Authentication helpers
 │   ├── supabase.ts      # Supabase client & types
 │   └── stripe.ts        # Stripe payment helpers
 └── hooks/               # Custom React hooks
@@ -189,7 +176,7 @@ All tables have comprehensive RLS policies ensuring:
 
 ### Security Features
 
-- JWT-based authentication via Clerk
+- Custom authentication system (implement in `src/lib/auth.ts`)
 - Server-side role verification
 - Row Level Security in Supabase
 - Secure file uploads with signed URLs
