@@ -1,13 +1,14 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { Header } from "@/components/header"
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Car, Star, Filter, ChevronDown, Users, Settings, Clock, Fuel, Wrench, Heart, MapPin, Calendar, Menu, Search, User } from "lucide-react";
+import { Car, Star, Filter, ChevronDown, Users, Settings, Clock, Fuel, Wrench, Heart, MapPin, Calendar, Search } from "lucide-react";
 import Link from "next/link";
 
 interface CarListing {
@@ -77,40 +78,7 @@ export default function CarsPage() {
   }
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Clean Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900">
-                <Menu className="h-5 w-5" />
-              </Button>
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
-                  <Car className="h-5 w-5 text-white" />
-                </div>
-                <span className="text-xl font-bold text-black">AUTOCAR</span>
-              </div>
-            </div>
-            
-            <nav className="hidden md:flex space-x-8">
-              <Link href="/" className="text-gray-600 hover:text-gray-900 font-medium">Home</Link>
-              <Link href="/cars" className="text-gray-900 font-medium">Cars</Link>
-              <Link href="/about" className="text-gray-600 hover:text-gray-900 font-medium">About</Link>
-              <Link href="/contact" className="text-gray-600 hover:text-gray-900 font-medium">Contact</Link>
-            </nav>
-            
-            <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900">
-                <Search className="h-4 w-4" />
-              </Button>
-              <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900">
-                <User className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Search and Filter Header */}
       <div className="bg-white border-b border-gray-200">
